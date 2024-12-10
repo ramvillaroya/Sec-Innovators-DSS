@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>health-tips & recommendations</title>
+    <link rel="stylesheet" href="/mainFolder/style.css">
+    <link rel="icon" href="https://w7.pngwing.com/pngs/461/347/png-transparent-fitness-logo-creative-fitness-logo-ribbon-physical-fitness-free-logo-design-template.png" type="png">
+</head>
+<body>
+<header>
+    <h2 class="logo">health-tips & recommendations</h2>
+    <nav class="navigation">
+        <button class="bthLogin-popup">Log In</button>
+        <a href="#"></a>
+        <a href="#"></a>
+        <a href="#"></a>
+        <a href="#"></a>
+    </nav>
+</header>
+<div class="wrapper">
+    <span class="icon-close">
+        <ion-icon name="close"></ion-icon>
+    </span>
+    <div class="form-box login">
+        <h2>Log In</h2>
+        <form id="login-form">
+            <div class="input-box">
+                <span class="icon">
+                    <ion-icon name="mail"></ion-icon>
+                </span>
+                <input type="email" id="login-email" required>
+                <label>Email</label>
+            </div>
+            <div class="input-box">
+                <span class="icon">
+                    <ion-icon name="lock-closed"></ion-icon>
+                </span>
+                <input type="password" id="login-password" required>
+                <label>Password</label>
+            </div>
+            <div class="remember-forgot">
+                <label><input type="checkbox" required> Remember me</label>
+                <a href="#">Forgot password?</a>
+            </div>
+            <button type="submit" class="bth">Log In</button>
+            <div class="login-register">
+                <p>Don’t have an account? <a href="#" class="register-link">Register</a></p>
+            </div>
+        </form>
+    </div>
+
+    <div class="form-box register">
+        <h2>Register</h2>
+        <form id="register-form">
+            <div class="input-box">
+                <span class="icon">
+                    <ion-icon name="person"></ion-icon>
+                </span>
+                <input type="text" id="signup-username" required>
+                <label>Username</label>
+            </div>
+            <div class="input-box">
+                <span class="icon">
+                    <ion-icon name="mail"></ion-icon>
+                </span>
+                <input type="email" id="signup-email" required>
+                <label>Email</label>
+            </div>
+            <div class="input-box">
+                <span class="icon">
+                    <ion-icon name="lock-closed"></ion-icon>
+                </span>
+                <input type="password" id="signup-password" required>
+                <label>Password</label>
+            </div>
+            <div class="remember-forgot">
+                <label><input type="checkbox" required> I accept the terms and conditions</label>
+            </div>
+            <button type="submit" class="bth">Register</button>
+            <div class="login-register">
+                <p>Already have an account? <a href="#" class="login-link">Log In</a></p>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script src="script.js"></script>
+<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+<script>
+    const wrapper = document.querySelector('.wrapper');
+    const loginLink = document.querySelector('.login-link');
+    const registerLink = document.querySelector('.register-link');
+    const bthPopup = document.querySelector('.bthLogin-popup');
+    const iconClose = document.querySelector('.icon-close');
+
+    // Toggle between login and register forms
+    registerLink.addEventListener('click', () => wrapper.classList.add('active'));
+    loginLink.addEventListener('click', () => wrapper.classList.remove('active'));
+    bthPopup.addEventListener('click', () => wrapper.classList.add('active-popup'));
+    iconClose.addEventListener('click', () => wrapper.classList.remove('active-popup'));
+
+    // Function to handle user registration
+    document.getElementById('register-form').addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        const username = document.getElementById('signup-username').value;
+        const email = document.getElementById('signup-email').value;
+        const password = document.getElementById('signup-password').value;
+
+        if (username && email && password) {
+            let users = JSON.parse(localStorage.getItem('users')) || [];
+            
+            // Check if email already exists
+            const existingUser = users.find(user => user.email === email);
+            if (existingUser) {
+                alert("This email is already registered.");
+                return;
+            }
+
+            users.push({ username, email, password });
+            localStorage.setItem('users', JSON.stringify(users));
+            alert("Account registered successfully!");
+
+            // Clear input fields after registration
+            document.getElementById('signup-username').value = '';
+            document.getElementById('signup-email').value = '';
+            document.getElementById('signup-password').value = '';
+
+            // Switch to login form after registration
+            wrapper.classList.remove('active');
+        } else {
+            alert("Please fill in all fields.");
+        }
+    });
+
+    // Function to handle user login
+    document.getElementById('login-form').addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        const email = document.getElementById('login-email').value;
+        const password = document.getElementById('login-password').value;
+
+        const users = JSON.parse(localStorage.getItem('users')) || [];
+        const user = users.find(user => user.email === email && user.password === password);
+
+        if (user) {
+            alert(`Welcome, ${user.username}!`);
+            window.location.href = "/fitness-dashboard/hralth-tips.html";  // Redirect to DSS page
+        } else {
+            alert("Incorrect email or password.");
+        }
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fitness Dashboard</title>
+    <link rel="stylesheet" href="fitness.css"> <!-- Link to your CSS file -->
+    <link rel="icon" href="https://w7.pngwing.com/pngs/461/347/png-transparent-fitness-logo-creative-fitness-logo-ribbon-physical-fitness-free-logo-design-template.png" type="png">
+</head>
+<body>
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <h2>Fitness</h2>
+        <div class="sidebar-img">
+            <img src="https://static.vecteezy.com/system/resources/previews/004/607/405/original/trendy-jogging-concepts-vector.jpg" alt="">
+        </div>
+        <nav class="sidebar-nav">
+            <ul>
+                <li><a href="#" class="active">Overview</a></li>
+                <li><a href="#">Workout</a></li>
+                <li><a href="#">Diet Plan</a></li>
+                <li><a href="#">Goals</a></li>
+                <li><a href="#">My Schedule</a></li>
+                <li><a href="#">Progress</a></li>
+            </ul>
+        </nav>   
+        <div class="team">
+            <div class="team">Powered by:</div>
+            <div class="tooltip">
+                <h4>Saavedra</h4>
+                <h4>Espiritu</h4>
+                <h4>Cabarce</h4>
+            </div>
+        </div>     
+        <div class="sidebar-footer">
+            <a href="#">Help</a>
+            <a href="#" onclick="window.location.href = '/index.html'">Logout</a>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="content">
+        <!-- Header -->
+        <header class="content-header">
+            <div class="welcome-message">
+                <h3>Welcome Back!</h3>
+            </div>
+            <div class="search-bar">
+                <input type="text" placeholder="Search">
+            </div>
+            <div class="user-profile">
+                <img src="user-profile.jpg" alt="User Profile"> <!-- Placeholder profile image -->
+            </div>
+        </header>
+
+        <!-- Activity Overview -->
+        <section class="activity-overview">
+            <div class="activity-card workout">
+                <h4>Workout</h4>
+                <p>6 hrs</p>
+            </div>
+            <div class="activity-card calories">
+                <h4>Calories</h4>
+                <p>1800 kcal</p>
+            </div>
+            <div class="activity-card steps">
+                <h4>Steps</h4>
+                <p>7,320 steps</p>
+            </div>
+        </section>
+        
+<section class="goal-progress">
+    <h3>Ask anything about health-tips</h3>
+    <div class="chat-container">
+        <div id="messageContainer" class="message-container"></div>
+        <div class="input-container">
+            <input type="text" id="userInput" placeholder="Type your message here...">
+            <button id="sendButton">Send</button>
+        </div>
+    </div>
+</section>
+
+        <!-- Food Tracking -->
+        <section class="food-tracking">
+    <h3>Food</h3>
+    <table>
+        <tr>
+            <th>Food</th>
+            <th>Meal</th>
+            <th>Calories</th>
+            <th>Proteins</th>
+            <th>Carbs</th>
+        </tr>
+        <tr>
+            <td>null</td>
+            <td>null</td>
+            <td>null</td>
+            <td>null</td>
+            <td>null</td>
+        </tr>
+        <tr>
+            <td>null</td>
+            <td>null</td>
+            <td>null</td>
+            <td>null</td>
+            <td>null</td>
+        </tr>
+    </table>
+</section>
+    </main>
+
+    <!-- Right Sidebar -->
+    <aside class="right-sidebar">
+        <!-- My Schedule -->
+        <section class="schedule">
+            <h3>My Schedule</h3>
+            <ul>
+                <li>Monday - Stretch - 20 Minutes</li>
+                <li>Tuesday - Back Stretch - 10 Rounds</li>
+                <li>Wednesday - Yoga - 30 Minutes</li>
+            </ul>
+        </section>
+
+        <!-- Goals -->
+        <section class="goals">
+            <h3>Goals</h3>
+            <ul>
+                <li>Running on Track - 4 Rounds</li>
+                <li>Push Up - 50 Reps</li>
+            </ul>
+        </section>
+
+        <!-- Promotion Banner -->
+        <section class="promo-banner">
+            <p>50% off on Premium Membership</p>
+            <button>Upgrade</button>
+        </section>
+    </aside>
+
+    <!-- JavaScript for Chart (Placeholder) -->
+    <script>
+        // Placeholder for chart setup using Chart.js or similar
+        const ctx = document.getElementById('goalChart').getContext('2d');
+        const goalChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+                datasets: [{
+                    label: 'Workout',
+                    data: [12, 19, 3, 5, 2, 3, 7],
+                    backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                    borderColor: 'rgba(54, 162, 235, 1)',
+                    borderWidth: 1
+                }, {
+                    label: 'Calories',
+                    data: [18, 12, 6, 9, 7, 10, 4],
+                    backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                    borderColor: 'rgba(255, 99, 132, 1)',
+                    borderWidth: 1
+                }, {
+                    label: 'Steps',
+                    data: [7, 11, 5, 8, 3, 7, 10],
+                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> 
+    <script src="script.js"></script>
+</body>
+</html>
